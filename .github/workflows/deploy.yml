@@ -28,5 +28,8 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SSH_IP: ${{ secrets.SSH_IP }}
 
-      - name: deploy site
-        run: ssh my-vm './redeploy-site.sh'
+      - name: Print project root directory
+        run: ssh my-vm 'cd ${{ secrets.PROJECT_ROOT }} && pwd'
+
+      - name: deploying site
+        run: ssh my-vm 'sh redeploy-site.sh'
